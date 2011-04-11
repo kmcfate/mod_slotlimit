@@ -1,4 +1,10 @@
 mod_slotlimit.c
+Kal McFate <kmcfate@darkink.com>
+
+This version is cleaned up, has a different detection method, and no longer supports
+the override file for sake of performance and simplicity.
+
+Based on work from:
 Luca Ercoli <luca@lucaercoli.it>
 
 
@@ -21,8 +27,6 @@ AvailableSlotsPercent 13
 MaxConnectionsPerSite 40
 
 ClientIpLimit 30
-
-CustomLimitsFile /etc/apache2/mod_slotlimit.rules
 
 ForceVhostName On
 
@@ -82,23 +86,6 @@ CustomErrMsg
 
     A custom error message that allows you to replace default error message with one you create
 
-CustomLimitsFile
-    Syntax: CustomLimitsFile /path/to/file 
-    Default:  No Value
-
-    Using this directive you can specify limits customized for each running site,
-    penalizing or privileged it. In the file should be stored (line by line) the
-    site name and the number of usable slots. You can add comments by using the '#'
-    character. The file format is as follows:
-
-    ..
-    ..
-    www.sitename1.it 10
-    # this is a comment
-    www.site2.com 35
-    ..
-    ..
-
 ------------------------------------------------------------------------------
 Install as DSO
 ------------------------------------------------------------------------------
@@ -107,7 +94,7 @@ If you have got the apxs2 (APache eXtenSion tool) tool installed, write the
 following commands to build module:
 
 $ tar xzvf mod_slotlimit.tar.gz
-$ cd mod_slotlimit-1.3
+$ cd mod_slotlimit
 $ make
 $ make install
 
