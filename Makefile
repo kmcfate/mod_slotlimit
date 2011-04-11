@@ -14,7 +14,7 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #
 
-APXS=apxs2
+APXS=apxs
 APXS_OPTS=-Wc, -Wc,-DDST_CLASS=3
 SRC=src/mod_slotlimit.c
 OBJ=src/.libs/mod_slotlimit.so
