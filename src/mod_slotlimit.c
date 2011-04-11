@@ -273,7 +273,7 @@ static void register_hooks(apr_pool_t *p)
 {
 
     ap_hook_post_config(slotlimit_init, NULL, NULL, APR_HOOK_MIDDLE);
-    ap_hook_access_checker(slotlimit_handler,NULL,NULL,APR_HOOK_MIDDLE);
+    ap_hook_post_read_request(slotlimit_handler,NULL,NULL,APR_HOOK_MIDDLE);
 
 }
 
