@@ -1,0 +1,10 @@
+# Build artifacts (apxs2 / libtool output)
+src/.libs/
+src/*.la
+src/*.lo
+src/*.slo
+src/*.o
+*.la
+*.lo
+*.o
+*.slo
