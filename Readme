@@ -1,6 +1,14 @@
 mod_slotlimit.c
 Kal McFate <kmcfate@darkink.com>
 
+Version 2.0 (2026-06-13) — modernized for Apache 2.4 / gcc 13+
+  See git log for full changelog. Key changes:
+  - Works with Apache 2.4.66+ (tested on Ubuntu 26.04 with apache2-dev 2.4.66)
+  - Uses ap_copy_scoreboard_worker (replaces deprecated ap_get_scoreboard_worker)
+  - Uses conn_rec.client_ip (the old conn_rec.remote_ip was removed in 2.4)
+  - Fixed per-dir vs per-server config bug (directives now actually take effect)
+  - Builds cleanly with -Wall -Wextra on gcc 15
+
 This version is cleaned up, has a different detection method, and no longer supports
 the override file for sake of performance and simplicity.
 
@@ -13,7 +21,9 @@ algorithm and static rules can manage resources used for each running site.
 
 
 Requirements:
-  Apache 2.x
+  Apache 2.4.x (tested on 2.4.66)
+  apr 1.7+
+  apxs2 / apache2-dev package
 
 
 --------------------------------------------------------------------------
